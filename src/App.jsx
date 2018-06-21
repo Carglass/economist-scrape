@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader";
 import AppMain from "./components/AppMain";
-import { scrapeCall } from "./tools/ajax";
+import { scrapeCall, saveArticleCall } from "./tools/ajax";
 
 class App extends Component {
   constructor(props) {
@@ -14,6 +14,7 @@ class App extends Component {
     };
 
     this.handleSwitch = this.handleSwitch.bind(this);
+    this.saveArticle = this.saveArticle.bind(this);
   }
 
   handleSwitch() {
@@ -37,6 +38,12 @@ class App extends Component {
     }
   }
 
+  saveArticle(article) {
+    saveArticleCall(article)
+      .then(data => console.log(data))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="App">
@@ -44,6 +51,7 @@ class App extends Component {
         <AppMain
           view={this.state.view}
           scrapeArticles={this.state.scrapedArticles}
+          saveArticle={this.saveArticle}
         />
       </div>
     );

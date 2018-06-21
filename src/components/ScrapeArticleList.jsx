@@ -5,7 +5,7 @@ function ScrapeArticleList(props) {
   return (
     <main className="scrape-articles">
       {props.scrapeArticles.map(article => {
-        return <ScrapeArticle key={article[0]} article={article} />;
+        return <ScrapeArticle key={article[0]} article={article} saveArticle={props.saveArticle}/>;
       })}
     </main>
   );
