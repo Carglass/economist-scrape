@@ -16,16 +16,23 @@ class App extends Component {
   }
 
   handleSwitch() {
-    scrapeCall()
-      .then(response => {
-        this.setState({
-          view: "scrape-articles",
-          scrapedArticles: response.data
+    if (this.state.view === "view-articles") {
+      scrapeCall()
+        .then(response => {
+          this.setState({
+            view: "scrape-articles",
+            scrapedArticles: response.data
+          });
+        })
+        .catch(function(error) {
+          console.log(error);
         });
-      })
-      .catch(function(error) {
-        console.log(error);
+    } else if (this.state.view === "scrape-articles") {
+      this.setState({
+        view: "view-articles",
+        scrapedArticles: []
       });
+    }
   }
 
   render() {
