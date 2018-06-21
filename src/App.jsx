@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader";
+import AppMain from "./components/AppMain";
 import { scrapeCall } from "./tools/ajax";
 
 class App extends Component {
@@ -39,6 +40,7 @@ class App extends Component {
     return (
       <div className="App">
         <AppHeader view={this.state.view} switchHandler={this.handleSwitch} />
+        <AppMain view={this.state.view} />
       </div>
     );
   }
