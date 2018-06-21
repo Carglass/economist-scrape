@@ -24,6 +24,7 @@ class App extends Component {
             view: "scrape-articles",
             scrapedArticles: response.data
           });
+          console.log(this.state.scrapedArticles);
         })
         .catch(function(error) {
           console.log(error);
@@ -40,7 +41,10 @@ class App extends Component {
     return (
       <div className="App">
         <AppHeader view={this.state.view} switchHandler={this.handleSwitch} />
-        <AppMain view={this.state.view} />
+        <AppMain
+          view={this.state.view}
+          scrapeArticles={this.state.scrapedArticles}
+        />
       </div>
     );
   }
