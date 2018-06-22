@@ -13,7 +13,9 @@ export function saveArticleCall(article) {
   let articleToPost = {
     article: article
   };
-  console.log(article);
-  console.log(articleToPost);
   return axios.post(`${rootApiAddress}/api/articles`, articleToPost, config);
+}
+
+export function loadArticlesCall() {
+  return axios.get(`${rootApiAddress}/api/articles`, config);
 }
