@@ -19,3 +19,7 @@ export function saveArticleCall(article) {
 export function loadArticlesCall() {
   return axios.get(`${rootApiAddress}/api/articles`, config);
 }
+
+export function upVoteArticle(id) {
+  return axios.put(`${rootApiAddress}/api/upvote/${id}`);
+}
