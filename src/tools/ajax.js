@@ -20,6 +20,6 @@ export function loadArticlesCall() {
   return axios.get(`${rootApiAddress}/api/articles`, config);
 }
 
-export function upVoteArticle(id) {
+export function upVoteArticleCall(id) {
   return axios.put(`${rootApiAddress}/api/upvote/${id}`);
 }

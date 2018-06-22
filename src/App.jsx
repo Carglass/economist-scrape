@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader";
 import AppMain from "./components/AppMain";
-import { scrapeCall, saveArticleCall, loadArticlesCall } from "./tools/ajax";
+import { scrapeCall, saveArticleCall, loadArticlesCall, upVoteArticleCall } from "./tools/ajax";
 
 class App extends Component {
   constructor(props) {
@@ -47,6 +47,10 @@ class App extends Component {
         this.setState({ articles: articlesCopy });
       })
       .catch(err => console.log(err));
+  }
+
+  upVoteArticle(id) {
+    upVoteArticleCall().then();
   }
 
   componentDidMount() {

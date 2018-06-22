@@ -1,7 +1,7 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
-import { upVoteArticle } from "./../tools/ajax.js";
+import { upVoteArticleCall } from "./../tools/ajax.js";
 
 function Article(props) {
   return (
@@ -12,7 +12,7 @@ function Article(props) {
       <div
         className="icon"
         onClick={() => {
-          upVoteArticle(props.article._id).then(data => console.log(data));
+          upVoteArticleCall(props.article._id).then(data => console.log(data));
         }}
       >
         <FontAwesomeIcon icon={faThumbsUp} />
