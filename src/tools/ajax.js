@@ -23,3 +23,7 @@ export function loadArticlesCall() {
 export function upVoteArticleCall(id) {
   return axios.put(`${rootApiAddress}/api/upvote/${id}`);
 }
+
+export function downVoteArticleCall(id) {
+  return axios.put(`${rootApiAddress}/api/downvote/${id}`);
+}

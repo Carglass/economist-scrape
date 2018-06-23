@@ -2,7 +2,23 @@ import React, { Component } from "react";
 import "./App.css";
 import AppHeader from "./components/AppHeader";
 import AppMain from "./components/AppMain";
-import { scrapeCall, saveArticleCall, loadArticlesCall, upVoteArticleCall } from "./tools/ajax";
+import {
+  scrapeCall,
+  saveArticleCall,
+  loadArticlesCall,
+  upVoteArticleCall,
+  downVoteArticleCall
+} from "./tools/ajax";
+import { fromJS } from "immutable";
+
+const findIndexById = (array, id) => {
+  for (var index in array) {
+    if (array[index]._id === id) {
+      return index;
+    }
+  }
+  return false;
+};
 
 class App extends Component {
   constructor(props) {
@@ -16,6 +32,8 @@ class App extends Component {
 
     this.handleSwitch = this.handleSwitch.bind(this);
     this.saveArticle = this.saveArticle.bind(this);
+    this.upVoteArticle = this.upVoteArticle.bind(this);
+    this.downVoteArticle = this.downVoteArticle.bind(this);
   }
 
   handleSwitch() {
@@ -50,7 +68,21 @@ class App extends Component {
   }
 
   upVoteArticle(id) {
-    upVoteArticleCall().then();
+    upVoteArticleCall(id).then(data => {
+      let index = findIndexById(this.state.articles, data.data._id);
+      let arrayToModify = fromJS(this.state.articles);
+      let arrayModified = arrayToModify.set(index, data.data);
+      this.setState({ articles: arrayModified.toJS() });
+    });
+  }
+
+  downVoteArticle(id) {
+    downVoteArticleCall(id).then(data => {
+      let index = findIndexById(this.state.articles, data.data._id);
+      let arrayToModify = fromJS(this.state.articles);
+      let arrayModified = arrayToModify.set(index, data.data);
+      this.setState({ articles: arrayModified.toJS() });
+    });
   }
 
   componentDidMount() {
@@ -71,6 +103,8 @@ class App extends Component {
           scrapeArticles={this.state.scrapedArticles}
           saveArticle={this.saveArticle}
           articles={this.state.articles}
+          upVoteArticle={this.upVoteArticle}
+          downVoteArticle={this.downVoteArticle}
         />
       </div>
     );
