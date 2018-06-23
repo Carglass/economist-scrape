@@ -3,7 +3,7 @@ import Button from "@material-ui/core/Button";
 
 const SwitchButton = props => (
   <Button onClick={props.switchHandler} color={"secondary"} variant="contained">
-    {props.currentView === "view-articles" ? "Scrape" : "Back"}
+    {props.currentView === "view-articles" ? "Scrape new articles" : "Back"}
   </Button>
 );
 
