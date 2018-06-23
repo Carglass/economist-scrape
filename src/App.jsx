@@ -89,6 +89,7 @@ class App extends Component {
 
   postArticleComment(id, comment) {
     postArticleCommentCall(id, comment).then(data => {
+      console.log(data);
       let index = findIndexById(this.state.articles, data.data._id);
       let arrayToModify = fromJS(this.state.articles);
       let arrayModified = arrayToModify.set(index, data.data);

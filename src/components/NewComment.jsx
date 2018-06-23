@@ -41,7 +41,10 @@ class NewComment extends Component {
         <Button
           variant="contained"
           onClick={() => {
-            this.props.postArticleComment(this.props.articleId);
+            this.props.postArticleComment(this.props.articleId, {
+              title: this.state.title,
+              content: this.state.content
+            });
           }}
         >
           Submit
