@@ -1,6 +1,5 @@
 import React from "react";
 import SwitchButton from "./Switchbutton";
-import "./AppHeader.css";
 
 function AppHeader(props) {
   return (

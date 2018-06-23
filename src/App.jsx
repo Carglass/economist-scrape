@@ -11,6 +11,7 @@ import {
   postArticleCommentCall
 } from "./tools/ajax";
 import { fromJS } from "immutable";
+import CssBaseline from "@material-ui/core/CssBaseline";
 
 const findIndexById = (array, id) => {
   for (var index in array) {
@@ -109,16 +110,18 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <AppHeader view={this.state.view} switchHandler={this.handleSwitch} />
-        <AppMain
-          view={this.state.view}
-          scrapeArticles={this.state.scrapedArticles}
-          saveArticle={this.saveArticle}
-          articles={this.state.articles}
-          upVoteArticle={this.upVoteArticle}
-          downVoteArticle={this.downVoteArticle}
-          postArticleComment={this.postArticleComment}
-        />
+        <CssBaseline>
+          <AppHeader view={this.state.view} switchHandler={this.handleSwitch} />
+          <AppMain
+            view={this.state.view}
+            scrapeArticles={this.state.scrapedArticles}
+            saveArticle={this.saveArticle}
+            articles={this.state.articles}
+            upVoteArticle={this.upVoteArticle}
+            downVoteArticle={this.downVoteArticle}
+            postArticleComment={this.postArticleComment}
+          />
+        </CssBaseline>
       </div>
     );
   }
