@@ -1,9 +1,10 @@
 import React from "react";
+import Button from "@material-ui/core/Button";
 
 const SwitchButton = props => (
-  <button onClick={props.switchHandler}>
+  <Button onClick={props.switchHandler} color={"secondary"} variant="contained">
     {props.currentView === "view-articles" ? "Scrape" : "Back"}
-  </button>
+  </Button>
 );
 
 export default SwitchButton;

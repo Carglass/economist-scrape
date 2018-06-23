@@ -39,7 +39,7 @@ class NewComment extends Component {
           margin="normal"
         />
         <Button
-          variant="contained"
+          color="secondary"
           onClick={() => {
             this.props.postArticleComment(this.props.articleId, {
               title: this.state.title,
@@ -47,7 +47,7 @@ class NewComment extends Component {
             });
           }}
         >
-          Submit
+          Send
         </Button>
       </div>
     );
