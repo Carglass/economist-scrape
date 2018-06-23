@@ -1,4 +1,5 @@
 import React from "react";
+import NewComment from "./NewComment";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faThumbsDown, faThumbsUp } from "@fortawesome/free-solid-svg-icons";
 
@@ -28,10 +29,17 @@ function Article(props) {
       </div>
       <div className="comments">
         {props.article.comments.map(comment => {
-          return <div>{comment.title}</div>;
+          return (
+            <div>
+              <div className="comment-title">{comment.title}</div>
+              <div className="comment-content">{comment.content}</div>
+            </div>
+          );
         })}
       </div>
-      <div className="new-comment" />
+      <div className="new-comment">
+        <NewComment />
+      </div>
     </div>
   );
 }
