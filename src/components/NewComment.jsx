@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
+import { Grid } from "@material-ui/core";
 
 class NewComment extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ class NewComment extends Component {
 
   render() {
     return (
-      <div>
+      <Grid container direction={"column"}>
         <TextField
           id="title"
           label="Title"
@@ -49,7 +50,7 @@ class NewComment extends Component {
         >
           Send
         </Button>
-      </div>
+      </Grid>
     );
   }
 }
