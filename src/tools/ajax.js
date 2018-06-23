@@ -27,3 +27,7 @@ export function upVoteArticleCall(id) {
 export function downVoteArticleCall(id) {
   return axios.put(`${rootApiAddress}/api/downvote/${id}`);
 }
+
+export function postArticleCommentCall(id, comment) {
+  return axios.post(`${rootApiAddress}/api/comments/${id}`, comment, config);
+}

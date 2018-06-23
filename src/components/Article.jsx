@@ -38,7 +38,10 @@ function Article(props) {
         })}
       </div>
       <div className="new-comment">
-        <NewComment />
+        <NewComment
+          postArticleComment={props.postArticleComment}
+          articleId={props.article._id}
+        />
       </div>
     </div>
   );

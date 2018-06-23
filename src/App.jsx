@@ -7,7 +7,8 @@ import {
   saveArticleCall,
   loadArticlesCall,
   upVoteArticleCall,
-  downVoteArticleCall
+  downVoteArticleCall,
+  postArticleCommentCall
 } from "./tools/ajax";
 import { fromJS } from "immutable";
 
@@ -34,6 +35,7 @@ class App extends Component {
     this.saveArticle = this.saveArticle.bind(this);
     this.upVoteArticle = this.upVoteArticle.bind(this);
     this.downVoteArticle = this.downVoteArticle.bind(this);
+    this.postArticleComment = this.postArticleComment.bind(this);
   }
 
   handleSwitch() {
@@ -85,6 +87,15 @@ class App extends Component {
     });
   }
 
+  postArticleComment(id, comment) {
+    postArticleCommentCall(id, comment).then(data => {
+      let index = findIndexById(this.state.articles, data.data._id);
+      let arrayToModify = fromJS(this.state.articles);
+      let arrayModified = arrayToModify.set(index, data.data);
+      this.setState({ articles: arrayModified.toJS() });
+    });
+  }
+
   componentDidMount() {
     loadArticlesCall().then(values => {
       console.log(values.data);
@@ -105,6 +116,7 @@ class App extends Component {
           articles={this.state.articles}
           upVoteArticle={this.upVoteArticle}
           downVoteArticle={this.downVoteArticle}
+          postArticleComment={this.postArticleComment}
         />
       </div>
     );

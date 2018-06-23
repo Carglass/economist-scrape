@@ -9,6 +9,7 @@ function AppMain(props) {
         articles={props.articles}
         upVoteArticle={props.upVoteArticle}
         downVoteArticle={props.downVoteArticle}
+        postArticleComment={props.postArticleComment}
       />
     );
   } else if (props.view === "scrape-articles") {

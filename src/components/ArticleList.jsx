@@ -11,6 +11,7 @@ function ArticleList(props) {
             article={article}
             upVoteArticle={props.upVoteArticle}
             downVoteArticle={props.downVoteArticle}
+            postArticleComment={props.postArticleComment}
           />
         );
       })}
