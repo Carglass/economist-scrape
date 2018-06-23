@@ -26,6 +26,12 @@ function Article(props) {
         <FontAwesomeIcon icon={faThumbsDown} />
         <span>{props.article.downvotes.toString()}</span>
       </div>
+      <div className="comments">
+        {props.article.comments.map(comment => {
+          return <div>{comment.title}</div>;
+        })}
+      </div>
+      <div className="new-comment" />
     </div>
   );
 }
